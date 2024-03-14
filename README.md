@@ -41,3 +41,8 @@ To discount the rewards, we proceed like this:
 Our discounted expected cumulative reward is:
 <br/><br/>
 <img src="images/rewards_4.jpg" alt="rewards" width="700"/>
+
+## Type of tasks
+A task is an instance of a Reinforcement Learning problem. We can have two types of tasks: episodic and continuing.
+<br/><br/>
+<img src="images/tasks.jpg" alt="tasks" width="700"/>
