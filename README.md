@@ -14,17 +14,30 @@ To understand the RL process, let’s imagine an agent learning to play a game:
 
 **This RL loop outputs a sequence of state, action, reward and next state.**
 
-## Agent's goal
-**The agent’s goal is to maximize its cumulative reward, called the expected return.**
-
-That’s why in Reinforcement Learning, to have the best behaviour, we aim to <ins>learn to take actions</ins> that maximize the expected cumulative reward.
-
 ## Observations/States Space
 Observations/States are the information our agent gets from the environment. In the case of a video game, it can be a frame (a screenshot). In the case of the trading agent, it can be the value of a certain stock, etc.
 <br/><br/>
-<img src="images/obs_space_recap.jpg" alt="RL_process" width="700"/>
+<img src="images/obs_space_recap.jpg" alt="obs_space_recap" width="700"/>
 
 ## Action Space
 The Action space is the set of all possible actions in an environment.
 <br/><br/>
-<img src="images/action_space.jpg" alt="RL_process" width="700"/>
+<img src="images/action_space.jpg" alt="action_space" width="700"/>
+
+## Rewards and the discounting
+The reward is fundamental in RL because it’s the only feedback for the agent. Thanks to it, our agent knows if the action taken was good or not.
+
+**The agent’s goal is to maximize its cumulative reward, called the expected return.**
+
+That’s why in Reinforcement Learning, to have the best behaviour, we aim to <ins>learn to take actions</ins> that maximize the expected cumulative reward.
+
+To discount the rewards, we proceed like this:
+
+1. We define a discount rate called gamma. It must be between 0 and 1. Most of the time between 0.95 and 0.99.
+  - The larger the gamma, the smaller the discount. This means our agent cares more about the long-term reward.
+  - On the other hand, the smaller the gamma, the bigger the discount. This means our agent cares more about the short-term reward (the nearest cheese).
+2. Then, each reward will be discounted by gamma to the exponent of the time step. As the time step increases, the cat gets closer to us, so the future reward is less and less likely to happen.
+
+Our discounted expected cumulative reward is:
+<br/><br/>
+<img src="images/rewards_4.jpg" alt="rewards" width="700"/>
