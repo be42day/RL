@@ -16,7 +16,7 @@ To understand the RL process, let’s imagine an agent learning to play a game:
 **This RL loop outputs a sequence of state, action, reward and next state.**
 <br/><br/>
 
-## Observations/States Space
+### Observations/States Space
 Observations/States are the information our agent gets from the environment. In the case of a video game, it can be a frame (a screenshot). In the case of the trading agent, it can be the value of a certain stock, etc.
 <br/><br/>
 <img src="images/obs_space_recap.jpg" alt="obs_space_recap" width="700"/>
@@ -28,7 +28,7 @@ The Action space is the set of all possible actions in an environment.
 <img src="images/action_space.jpg" alt="action_space" width="700"/>
 <br/><br/>
 
-## Rewards and the discounting
+### Rewards and the discounting
 The reward is fundamental in RL because it’s the only feedback for the agent. Thanks to it, our agent knows if the action taken was good or not.
 
 **The agent’s goal is to maximize its cumulative reward, called the expected return.**
@@ -47,12 +47,32 @@ Our discounted expected cumulative reward is:
 <img src="images/rewards_4.jpg" alt="rewards" width="700"/>
 <br/><br/>
 
-## Type of tasks
+### Type of tasks
 A task is an instance of a Reinforcement Learning problem. We can have two types of tasks: episodic and continuing.
 <br/><br/>
 <img src="images/tasks.jpg" alt="tasks" width="700"/>
 <br/><br/>
 
-## The Exploration/Exploitation trade-off
+### The Exploration/Exploitation trade-off
 <img src="images/expexpltradeoff.jpg" alt="expexpltradeoff" width="700"/>
 <br/><br/>
+
+## Solving RL problems
+How do we solve the RL problem?
+
+In other words, how do we build an RL agent that can select the actions that maximize its expected cumulative reward?
+
+### The Policy π: the agent’s brain
+This Policy is the function we want to learn, our goal is to find the optimal policy π*, the policy that maximizes expected return when the agent acts according to it.
+We find this π* through training.
+
+There are two approaches to train our agent to find this optimal policy π*:
+
+1. (Directly) Policy-Based Methods
+   In Policy-Based methods, we learn a policy function directly.
+   
+   This function will define a mapping from each state to the best corresponding action. Alternatively, it could define a probability     distribution over the set of possible actions at that state.
+   We have two types of policies:
+   - Deterministic: a policy in a given state will always return the same action.
+   - Stochastic: outputs a probability distribution over actions.
+3. (Indirectly) Value-Based Methods
