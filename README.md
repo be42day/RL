@@ -33,7 +33,8 @@ That’s why in Reinforcement Learning, to have the best behaviour, we aim to <i
 
 To discount the rewards, we proceed like this:
 
-1. We define a discount rate called gamma. It must be between 0 and 1. Most of the time between 0.95 and 0.99.
+1. We define a discount rate called gamma. It must be between 0 and 1.
+  - Most of the time between 0.95 and 0.99.
   - The larger the gamma, the smaller the discount. This means our agent cares more about the long-term reward.
   - On the other hand, the smaller the gamma, the bigger the discount. This means our agent cares more about the short-term reward (the nearest cheese).
 2. Then, each reward will be discounted by gamma to the exponent of the time step. As the time step increases, the cat gets closer to us, so the future reward is less and less likely to happen.
