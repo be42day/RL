@@ -6,7 +6,7 @@
 ## The RL Process
 To understand the RL process, let’s imagine an agent learning to play a game:
 <br/><br/>
-<img src="images/RL_process_game.jpg" alt="RL_process" width="500"/>
+<img src="images/RL_process_game.jpg" alt="RL_process" width="700"/>
 - Our Agent receives state **S0** from the Environment — we receive the first frame of our game (Environment).
 - Based on that state **S0**, the Agent takes action **A0** — our Agent will move to the right.
 - The environment goes to a new state **S1** — new frame.
@@ -18,3 +18,13 @@ To understand the RL process, let’s imagine an agent learning to play a game:
 **The agent’s goal is to maximize its cumulative reward, called the expected return.**
 
 That’s why in Reinforcement Learning, to have the best behaviour, we aim to <ins>learn to take actions</ins> that maximize the expected cumulative reward.
+
+## Observations/States Space
+Observations/States are the information our agent gets from the environment. In the case of a video game, it can be a frame (a screenshot). In the case of the trading agent, it can be the value of a certain stock, etc.
+<br/><br/>
+<img src="images/obs_space_recap.jpg" alt="RL_process" width="700"/>
+
+## Action Space
+The Action space is the set of all possible actions in an environment.
+<br/><br/>
+<img src="images/action_space.jpg" alt="RL_process" width="700"/>
