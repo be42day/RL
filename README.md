@@ -94,7 +94,7 @@ There are two approaches to train our agent to find this optimal policy π*:
 Most of the time, in value-based methods, you’ll use an *Epsilon-Greedy Policy* that handles the exploration/exploitation trade-off.
 <br/><br/>
 
-## Q-Learning
+## Q-Learning (value-based)
 ### Value-based methods
 We have two types of value-based functions:
 
@@ -104,3 +104,37 @@ We see that the difference is:
 
 - For the **state-value** function, we calculate the value of a state **St**
 - For the **action-value** function, we calculate the value of the state-action pair **(St , At)**, hence the value of taking that action at that state.
+
+However, the problem is that to calculate EACH value of a state or a state-action pair, we need to sum all the rewards an agent can get if it starts at that state.
+
+This can be a computationally expensive process, and that’s where the **Bellman equation** comes in to help us.
+<br/><br/>
+
+### The Bellman Equation: simplify our value estimation
+The idea of the Bellman equation is that instead of calculating each value as the sum of the expected return, which is a long process, we calculate the value as the sum of immediate reward + the discounted value of the state that follows.
+
+<img src="images/bellman6.jpg" alt="bellman" width="500"/>
+<br/><br/>
+
+### Monte Carlo vs Temporal Difference Learning
+Monte Carlo and Temporal Difference Learning are two different strategies on how to train our value function or our policy function.
+
+We explain these two strategies by Mouse and Cheese example:
+#### Monte Carlo: learning at the end of the episode
+<img src="images/MC-4p.jpg" alt="montecarlo" width="500"/>
+
+<img src="images/MC-5p.jpg" alt="montecarlo" width="500"/>
+<br/><br/>
+
+#### Temporal Difference Learning: learning at each step
+<img src="images/TD-2p.jpg" alt="temporaldifference" width="500"/>
+
+<img src="images/TD-3p.jpg" alt="temporaldifference" width="500"/>
+
+Formulas:
+
+<img src="images/Summary.jpg" alt="summary" width="500"/>
+
+**bootstrapping**
+
+In general, *bootstrapping* in RL means that you update a value based on some estimates and not on some exact values. E.g. In TD(0), the return starting from state s is estimated (bootstrapped) by Rt+1+γV(St+1) while in MC we use the exact return Gt.
