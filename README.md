@@ -7,7 +7,7 @@
 ## The RL Process
 To understand the RL process, let’s imagine an agent learning to play a game:
 <br/><br/>
-<img src="images/RL_process_game.jpg" alt="RL_process" width="700"/>
+<img src="images/RL_process_game.jpg" alt="RL_process" width="500"/>
 - Our Agent receives state **S0** from the Environment — we receive the first frame of our game (Environment).
 - Based on that state **S0**, the Agent takes action **A0** — our Agent will move to the right.
 - The environment goes to a new state **S1** — new frame.
@@ -19,13 +19,13 @@ To understand the RL process, let’s imagine an agent learning to play a game:
 ### Observations/States Space
 Observations/States are the information our agent gets from the environment. In the case of a video game, it can be a frame (a screenshot). In the case of the trading agent, it can be the value of a certain stock, etc.
 <br/><br/>
-<img src="images/obs_space_recap.jpg" alt="obs_space_recap" width="700"/>
+<img src="images/obs_space_recap.jpg" alt="obs_space_recap" width="500"/>
 <br/><br/>
 
 ## Action Space
 The Action space is the set of all possible actions in an environment.
 <br/><br/>
-<img src="images/action_space.jpg" alt="action_space" width="700"/>
+<img src="images/action_space.jpg" alt="action_space" width="500"/>
 <br/><br/>
 
 ### Rewards and the discounting
@@ -44,17 +44,17 @@ To discount the rewards, we proceed like this:
 
 Our discounted expected cumulative reward is:
 <br/><br/>
-<img src="images/rewards_4.jpg" alt="rewards" width="700"/>
+<img src="images/rewards_4.jpg" alt="rewards" width="500"/>
 <br/><br/>
 
 ### Type of tasks
 A task is an instance of a Reinforcement Learning problem. We can have two types of tasks: episodic and continuing.
 <br/><br/>
-<img src="images/tasks.jpg" alt="tasks" width="700"/>
+<img src="images/tasks.jpg" alt="tasks" width="500"/>
 <br/><br/>
 
 ### The Exploration/Exploitation trade-off
-<img src="images/expexpltradeoff.jpg" alt="expexpltradeoff" width="700"/>
+<img src="images/expexpltradeoff.jpg" alt="expexpltradeoff" width="500"/>
 <br/><br/>
 
 ## Solving RL problems
@@ -74,5 +74,19 @@ There are two approaches to train our agent to find this optimal policy π*:
    This function will define a mapping from each state to the best corresponding action. Alternatively, it could define a probability     distribution over the set of possible actions at that state.
    We have two types of policies:
    - Deterministic: a policy in a given state will always return the same action.
+     
+      <img src="images/policy_4.jpg" alt="policy-based" width="300"/>
+
    - Stochastic: outputs a probability distribution over actions.
+     
+      <img src="images/policy-based.png" alt="policy-based" width="300"/>
 3. (Indirectly) Value-Based Methods
+   In value-based methods, instead of learning a policy function, we learn a value function that maps a state to the expected value of being at that state.
+
+   The value of a state is the expected discounted return the agent can get if it starts in that state, and then acts according to our policy.
+
+   “Act according to our policy” just means that our policy is “going to the state with the highest value”.
+
+   <img src="images/value_1.jpg" alt="value-based" width="350"/></br>
+   
+   <img src="images/value_2.jpg" alt="value-based" width="350"/>
