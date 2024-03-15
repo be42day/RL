@@ -22,7 +22,7 @@ Observations/States are the information our agent gets from the environment. In 
 <img src="images/obs_space_recap.jpg" alt="obs_space_recap" width="500"/>
 <br/><br/>
 
-## Action Space
+### Action Space
 The Action space is the set of all possible actions in an environment.
 <br/><br/>
 <img src="images/action_space.jpg" alt="action_space" width="500"/>
@@ -90,3 +90,17 @@ There are two approaches to train our agent to find this optimal policy π*:
    <img src="images/value_1.jpg" alt="value-based" width="350"/></br>
    
    <img src="images/value_2.jpg" alt="value-based" width="350"/>
+
+Most of the time, in value-based methods, you’ll use an *Epsilon-Greedy Policy* that handles the exploration/exploitation trade-off.
+<br/><br/>
+
+## Q-Learning
+### Value-based methods
+We have two types of value-based functions:
+
+<img src="images/two-types.jpg" alt="value-based" width="500"/>
+
+We see that the difference is:
+
+- For the **state-value** function, we calculate the value of a state **St**
+- For the **action-value** function, we calculate the value of the state-action pair **(St , At)**, hence the value of taking that action at that state.
