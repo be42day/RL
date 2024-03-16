@@ -117,19 +117,17 @@ The idea of the Bellman equation is that instead of calculating each value as th
 <br/><br/>
 
 ### Monte Carlo vs Temporal Difference Learning
-Monte Carlo and Temporal Difference Learning are two different strategies on how to train our value function or our policy function.
+There are two types of methods to update the value function: Monte Carlo and Temporal Difference Learning
 
-We explain these two strategies by Mouse and Cheese example:
-#### Monte Carlo: learning at the end of the episode
-<img src="images/MC-4p.jpg" alt="montecarlo" width="500"/>
+- Monte Carlo: learning at the end of the episode
+  
+  <img src="images/MC-4p.jpg" alt="montecarlo" width="500"/>
+  <img src="images/MC-5p.jpg" alt="montecarlo" width="500"/>
 
-<img src="images/MC-5p.jpg" alt="montecarlo" width="500"/>
-<br/><br/>
-
-#### Temporal Difference Learning: learning at each step
-<img src="images/TD-2p.jpg" alt="temporaldifference" width="500"/>
-
-<img src="images/TD-3p.jpg" alt="temporaldifference" width="500"/>
+- Temporal Difference Learning: learning at each step
+  
+  <img src="images/TD-2p.jpg" alt="temporaldifference" width="500"/>
+  <img src="images/TD-3p.jpg" alt="temporaldifference" width="500"/>
 
 Formulas:
 
@@ -137,4 +135,27 @@ Formulas:
 
 **bootstrapping**
 
-In general, *bootstrapping* in RL means that you update a value based on some estimates and not on some exact values. E.g. In TD(0), the return starting from state s is estimated (bootstrapped) by Rt+1+γV(St+1) while in MC we use the exact return Gt.
+In general, *bootstrapping* in RL means that you update a value based on some estimates and not on some exact values. E.g. In TD(0), the return starting from state *s* is estimated (bootstrapped) by *Rt+1+γV(St+1)* while in MC we use the exact return *Gt*.
+
+### What is Q-Learning?
+Q-Learning is an <ins>off-policy</ins> <ins>value-based</ins> method that uses a <ins>TD</ins> approach to train its <ins>action-value</ins> function
+
+<img src="images/Q-function-2.jpg" alt="Q-Learning" width="500"/>
+
+**Algorithm**
+
+<img src="images/Q-learning-2.jpg" alt="Q-Learning" width="500"/>
+
+**Epsilon-greedy strategy**
+
+The epsilon-greedy strategy is a policy that handles the exploration/exploitation trade-off. At the beginning of the training, the probability of doing exploration will be huge since ɛ is very high, so most of the time, we’ll explore. But as the training goes on, and consequently our Q-table gets better and better in its estimations, we progressively reduce the epsilon value since we will need less and less exploration and more exploitation.
+
+<img src="images/Q-learning-5.jpg" alt="Q-Learning" width="500"/>
+
+**Off-policy vs On-policy**
+
+It's about the sameness between the action choosing in *"training time"* and the action choosing when *"using the model"*.
+
+<img src="images/off-on-4.jpg" alt="off-on-policy.jpg" width="500"/>
+
+
