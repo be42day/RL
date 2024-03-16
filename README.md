@@ -146,7 +146,10 @@ Q-Learning is an <ins>off-policy</ins> <ins>value-based</ins> method that uses a
 
 <img src="images/Q-learning-2.jpg" alt="Q-Learning" width="500"/>
 
+<img src="images/Q_Learning_Process_134331efc1.jpg" alt="Q-Learning"/>
+
 **Greedy strategy:**
+
 This strategy always chooses the action that is expected to lead to the highest reward, based on the current knowledge of the environment.
 
 **Epsilon-greedy strategy:**
