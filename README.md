@@ -142,17 +142,20 @@ Q-Learning is an <ins>off-policy</ins> <ins>value-based</ins> method that uses a
 
 <img src="images/Q-function-2.jpg" alt="Q-Learning" width="500"/>
 
-**Algorithm**
+**Algorithm:**
 
 <img src="images/Q-learning-2.jpg" alt="Q-Learning" width="500"/>
 
-**Epsilon-greedy strategy**
+**Greedy strategy:**
+This strategy always chooses the action that is expected to lead to the highest reward, based on the current knowledge of the environment.
+
+**Epsilon-greedy strategy:**
 
 The epsilon-greedy strategy is a policy that handles the exploration/exploitation trade-off. At the beginning of the training, the probability of doing exploration will be huge since ɛ is very high, so most of the time, we’ll explore. But as the training goes on, and consequently our Q-table gets better and better in its estimations, we progressively reduce the epsilon value since we will need less and less exploration and more exploitation.
 
 <img src="images/Q-learning-4.jpg" alt="Q-Learning" width="500"/>
 
-**Off-policy vs On-policy**
+**Off-policy vs On-policy:**
 
 It's about the sameness between the action choosing in *"training time"* and the action choosing when *"using the model"*.
 
