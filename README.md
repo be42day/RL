@@ -136,6 +136,7 @@ Formulas:
 **bootstrapping**
 
 In general, *bootstrapping* in RL means that you update a value based on some estimates and not on some exact values. E.g. In TD(0), the return starting from state *s* is estimated (bootstrapped) by *Rt+1+γV(St+1)* while in MC we use the exact return *Gt*.
+<br/><br/>
 
 ### What is Q-Learning?
 Q-Learning is an <ins>off-policy</ins> <ins>value-based</ins> method that uses a <ins>TD</ins> approach to train its <ins>action-value</ins> function
@@ -163,5 +164,58 @@ The epsilon-greedy strategy is a policy that handles the exploration/exploitatio
 It's about the sameness between the action choosing in *"training time"* and the action choosing when *"using the model"*.
 
 <img src="images/off-on-4.jpg" alt="off-on-policy.jpg" width="500"/>
+<br/><br/>
 
+## Deep Q-Learning
+<img src="images/deep.jpg" alt="deepQ.jpg" width="500"/>
+
+### The Deep Q-Network (DQN)
+This is the architecture of our Deep Q-Learning network:
+
+<img src="images/deep-q-network.jpg" alt="deepQ.jpg" width="500"/>
+<br/><br/>
+
+**Preprocessing the input and temporal limitation:**
+
+- We reduce the state space to 84x84 and grayscale it.
+- We can also crop a part of the screen in some games if it does not contain important information.
+- We stack frames together because it helps us handle the problem of temporal limitation.
+  Temporal Limitation is a difficulty presented when the environment state is represented by frames. A frame by itself does not provide temporal information. In order to obtain temporal information, we need to stack a number of frames together.
+
+<img src="images/temporal-limitation-2.jpg" alt="deepQ.jpg" width="500"/>
+
+### The Deep Q-Learning Algorithm
+#### Fixed Q-Target
+First, look at the updating formula for Q-value estimation by Temporal Difference from Q-learning algorithm:
+
+<img src="images/q-ex-5.jpg" alt="deepQ.jpg" width="500"/>
+
+As you see, we need to calculate the TD Error in each step. In other words, we create a **loss function** that compares our **Q-value prediction** and the **Q-target** and uses gradient descent to update the weights of our Deep Q-Network to approximate our Q-values better.
+
+When we want to calculate the TD error (aka the loss), we calculate the difference between the TD target (Q-Target) and the current Q-value (estimation of Q). But we don’t have any idea of the real TD target. We need to estimate it. Using the Bellman equation, we saw that the TD target is just the reward of taking that action at that state plus the discounted highest Q value for the next state.
+
+Therefore, at every step of training, both our Q-values and the target values shift. We’re getting closer to our target, but the target is also moving. It’s like chasing a moving target! This can lead to significant oscillation in training.
+
+So, what we see in the pseudo-code is that we:
+
+- Use a **separate network with fixed parameters** for estimating the TD Target
+- **Copy the parameters from our Deep Q-Network every C steps** to update the target network.
+
+<img src="images/fixed-q-target-pseudocode.jpg" alt="deepQ.jpg" width="500"/>
+
+#### Sampling and Training
+The Deep Q-Learning training algorithm has two phases:
+- **Sampling:** We perform actions and store the observed experience tuples in a *replay memory*.
+- **Training:** Select a small batch of tuples randomly from the *replay memory* and learn from this batch using a gradient descent update step.
+
+<img src="images/sampling-training.jpg" alt="deepQ.jpg" width="500"/>
+
+#### Replay Memory and Experience Replay
+- Usually, in online reinforcement learning, the agent interacts with the environment, gets experiences (state, action, reward, and next state), learns from them (updates the neural network), and discards them. This is not efficient.
+- A replay memory is created to save experiences samples that can be reused during training. This allows the agent to learn from the same experiences multiple times. Also, it helps the agent avoid forgetting previous experiences as it gets new ones.
+- Random sampling from replay buffer allows to remove correlation in the observation sequences and prevents action values from oscillating or diverging catastrophically.
+- In the Deep Q-Learning pseudocode, we initialize a replay memory buffer D with capacity N (N is a hyperparameter that you can define). We then store experiences in the memory and sample a batch of experiences to feed the Deep Q-Network during the training phase.
+
+<img src="images/experience-replay.jpg" alt="deepQ.jpg" width="500"/>
+<br/><br/>
 
