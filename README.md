@@ -219,3 +219,21 @@ The Deep Q-Learning training algorithm has two phases:
 <img src="images/experience-replay.jpg" alt="deepQ.jpg" width="500"/>
 <br/><br/>
 
+## Policy-gradient Methods (policy-based)
+With policy-based methods, we want to optimize the policy directly without having an intermediate step of learning a value function.
+
+<img src="images/policy_based.png" alt="policy_based" width="500"/>
+
+### Advantages and Disadvantages
+pros:
+- Policy-gradient methods can learn a stochastic policy while value functions can’t:
+   - We don’t need to implement an exploration/exploitation trade-off by hand.
+   - We also get rid of the problem of perceptual aliasing. Perceptual aliasing is when two states seem (or are) the same but need different actions.
+- Policy-gradient methods are more effective in high-dimensional action spaces and continuous actions spaces.
+
+cons:
+- Frequently, policy-gradient methods converges to a local maximum instead of a global optimum.
+- Policy-gradient goes slower, step by step: it can take longer to train (inefficient).
+- Policy-gradient can have high variance. We’ll see in the actor-critic unit why, and how we can solve this problem.
+
+
